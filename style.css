@@ -1,0 +1,29 @@
+body {
+    /* color: rgba(255, 255, 255, 0.75); */
+    /* font-family: 'Anonymous Pro', monospace; */
+    background-color: rgb(25, 25, 25);
+  }
+  
+  .beg-bg-primary {
+    background-color: rgb(34, 34, 34);
+  }
+  
+  .beg-bg-secondary {
+    background-color: rgb(41, 41, 41);
+  }
+  
+  input:not(:placeholder-shown) {
+    background-color: rgb(41, 41, 41) !important;
+  }
+  
+  input:placeholder-shown {
+    background-color: rgb(41, 41, 41) !important;
+  }
+  
+  textarea:not(:placeholder-shown) {
+    background-color: rgb(41, 41, 41) !important;
+  }
+  
+  textarea:placeholder-shown {
+    background-color: rgb(41, 41, 41) !important;
+  }
