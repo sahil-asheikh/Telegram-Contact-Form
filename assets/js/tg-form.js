@@ -65,12 +65,29 @@ document
       xhttp.open("GET", url, true);
       xhttp.send();
 
-      // success message
+      // response message
       xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          console.log("Success");
-        } else {
-          console.log("Failed");
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+          // printing the responses on console
+          console.log("xhttp.readyState=", xhttp.readyState);
+          console.log("xhttp.status=", xhttp.status);
+          console.log("response=", xhttp.responseText);
+
+          // storing the responses
+          var data = JSON.parse(xhttp.responseText);
+          var uploadResult = data["ok"];
+          console.log("uploadResult=", uploadResult);
+
+          // conditions to show response messages
+          if (uploadResult === true) {
+            var sentMsg = document.getElementById("sent-message");
+            sentMsg.style.display = "block";
+            console.log("successfully uploaded file");
+          } else {
+            var errorMsg = document.getElementById("error-message");
+            errorMsg.style.display = "block";
+            console.log("failed to upload file");
+          }
         }
       };
     }

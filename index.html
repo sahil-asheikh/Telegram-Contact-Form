@@ -6,17 +6,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Telegram contact form</title>
+
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
     <!-- internal css -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- sweet alerts -->
-    <script src="assets/js/sweetalert.js"></script>
-    <script src="assets/js/sweetalert.min.js"></script>
 
 </head>
 
@@ -34,6 +31,15 @@
                             <textarea name="message" id="message" cols="30" rows="5"
                                 class="form-control mb-4 text-light beg-bg-secondary" placeholder="Enter your message"
                                 required></textarea>
+                        </div>
+                        <div class="my-3">
+                            <!-- <div class="loading">Loading...</div> -->
+                            <div id="error-message" class="error-message text-light" style="display: none;">
+                                Sorry message has not been sent because of some external issue.
+                            </div>
+                            <div id="sent-message" class="sent-message text-light" style="display: none;">
+                                Your message has been sent. Thank you!
+                            </div>
                         </div>
                         <div class="form-group m-2">
                             <button type="submit" class="btn btn-primary w-100">Submit</button>
