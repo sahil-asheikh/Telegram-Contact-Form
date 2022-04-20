@@ -6,18 +6,8 @@ document
 
     // to get date and time
     var today = new Date();
-    var date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate() +
-      "::::" +
-      today.getHours() +
-      "-" +
-      today.getMinutes() +
-      "-" +
-      today.getSeconds();
+    var date = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+    var time = today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
 
     // to get input values
     var nameInput = document.getElementById("name").value;
@@ -37,12 +27,11 @@ document
       swal("Message !", "Invalid message", "error");
       // return false;
     } else {
-      var send_message =
-        date +
-        "%0A%0A<b>Name:</b> " +
-        nameInput +
-        "%0A<b>Message:</b> " +
-        message;
+        var send_message = "Hey Sahil, you have a contact detail from a new client!!!%0A%0A" + 
+            "<b>Name:</b> " + nameInput + 
+            "%0A<b>Message:</b> " + message + 
+            "%0A<b>Date:</b> " + date + 
+            "%0A<b>Time:</b> " + time;
 
       // declearing bot token and chat id
       var bot_token = "2010375335:AAHGC-b-Db6iIwiulIjAu2uMEZQan-XhHKo"; // bot token
@@ -60,6 +49,15 @@ document
 
       // creating request
       var xhttp = new XMLHttpRequest();
+      
+      // loading status
+      var loadingMsg = document.getElementById("loading-message");
+      var sentMsg = document.getElementById("sent-message");
+      var errorMsg = document.getElementById("error-message");
+
+      sentMsg.style.display = "none";
+      errorMsg.style.display = "none";
+      loadingMsg.style.display = "block";
 
       // send a request
       xhttp.open("GET", url, true);
@@ -80,15 +78,19 @@ document
 
           // conditions to show response messages
           if (uploadResult === true) {
-            var sentMsg = document.getElementById("sent-message");
+            loadingMsg.style.display = "none";
             sentMsg.style.display = "block";
             console.log("successfully uploaded file");
           } else {
-            var errorMsg = document.getElementById("error-message");
+            loadingMsg.style.display = "none";
             errorMsg.style.display = "block";
             console.log("failed to upload file");
           }
-        }
+        } else {
+            loadingMsg.style.display = "none";
+            errorMsg.style.display = "block";
+            console.log("failed to upload file");
+          }
       };
     }
   });
